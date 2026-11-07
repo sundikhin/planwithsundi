@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sundi's Nail Picks</title>
+<meta name="description" content="Sundi's nail polish recommendations: base coats, colors, and top coats.">
+<link rel="canonical" href="https://planwithsundi.com/recs/">
+<meta name="theme-color" content="#fff1f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121014" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sundi's Nail Picks">
+<meta property="og:description" content="Sundi's nail polish recommendations: base coats, colors, and top coats.">
+<meta property="og:url" content="https://planwithsundi.com/recs/">
+<meta property="og:image" content="https://planwithsundi.com/recs/img/milky-white-shimmer.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%85%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css">
+<style>
+/* Page layout: mobile-first single column of "coat" sections, stacked in the order you paint them. */
+
+.filters { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+.pill {
+  font: inherit; font-weight: 800; font-size: .95rem; min-height: 2.75rem; padding: .4rem 1rem; border-radius: 999px;
+  border: 2px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer;
+  box-shadow: 2px 2px 0 var(--shadow);
+  transition: transform .12s, box-shadow .12s;
+}
+.pill:hover { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--shadow); }
+.pill:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.pill[aria-pressed="true"] { background: var(--pink); color: #3b1530; transform: translate(2px, 2px); box-shadow: 0 0 0 var(--shadow); }
+
+section { display: flex; flex-direction: column; gap: 1.75rem; }
+.section-head { margin-bottom: -.25rem; }
+.section-head { display: flex; align-items: center; gap: .6rem; }
+.step-badge {
+  width: 2.5rem; height: 2.5rem; border-radius: 50%; display: grid; place-items: center;
+  font-family: var(--font-display); font-size: 1.25rem; background: var(--mint); color: #3b1530;
+  border: 2px solid var(--line); flex: none;
+}
+h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.75rem; margin: 0; line-height: 1.15; text-wrap: balance; }
+
+/* Card: stacked by default (phones, large text); side by side only when there is real room */
+.card {
+  position: relative; display: flex; flex-direction: column; gap: 1.25rem;
+  background: var(--card); border: 3px solid var(--line); border-radius: 1.5rem;
+  padding: 1.25rem; padding-top: 2rem; box-shadow: 5px 5px 0 var(--shadow);
+}
+.bottle-wrap {
+  position: relative; height: 20rem; background: var(--lilac); border: 2px solid var(--line); border-radius: 1.25rem; overflow: hidden;
+}
+.bottle.photo { inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.bottle { position: absolute; inset: .75rem; width: calc(100% - 1.5rem); height: calc(100% - 1.5rem); object-fit: contain; transform-origin: 50% 90%; }
+.card:hover .bottle:not(.photo) { animation: wiggle .6s ease-in-out; }
+@keyframes wiggle { 0%,100% { transform: rotate(0); } 25% { transform: rotate(-7deg); } 75% { transform: rotate(7deg); } }
+
+.info { min-width: 0; display: flex; flex-direction: column; gap: .7rem; }
+.brand { font-weight: 800; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+h3 { font-family: var(--font-display); font-weight: 400; font-size: 2.1rem; line-height: 1.05; margin: 0; color: var(--title, var(--ink)); }
+.tagline { margin: 0; font-weight: 700; color: var(--ink-soft); }
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; padding: 0; margin: 0; list-style: none; }
+.tags li {
+  font-size: .85rem; font-weight: 800; padding: .2rem .65rem; border-radius: 999px;
+  border: 2px solid var(--line); background: var(--mint); color: #3b1530;
+}
+.tags li:nth-child(2) { background: var(--sun); }
+.tags li:nth-child(3) { background: var(--lilac); }
+.facts { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1rem; font-weight: 800; }
+.facts .count { font-weight: 700; opacity: .75; }
+.stars { color: var(--pink); letter-spacing: .1em; white-space: nowrap; }
+.price {
+  position: absolute; top: -1rem; right: 1rem; transform: rotate(6deg);
+  background: var(--sun); color: #3b1530; font-family: var(--font-display); font-size: 1.35rem; line-height: 1.1;
+  padding: .3rem 1rem; border-radius: 999px; border: 3px solid var(--line); box-shadow: 3px 3px 0 var(--shadow);
+}
+.award { display: flex; flex-direction: column; gap: .5rem; margin: 0; padding: 0; list-style: none; }
+.award li { font-size: .95rem; font-weight: 700; background: var(--card); border: 2px solid var(--line); border-radius: .9rem; padding: .4rem .8rem; }
+
+/* Full-width, thumb-sized button */
+.btn {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  min-height: 3rem; text-decoration: none; font-weight: 800; color: #3b1530;
+  background: var(--pink); border: 3px solid var(--line); border-radius: 999px; padding: .6rem 1.25rem;
+  box-shadow: 3px 3px 0 var(--shadow); transition: transform .12s, box-shadow .12s; margin-top: .25rem;
+}
+.btn:hover, .btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--shadow); }
+.btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+
+@media (min-width: 36rem) {
+  body { padding-block: 2.5rem 4rem; }
+  .card { display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr); align-items: center; gap: 1.5rem; padding: 1.5rem; }
+  .bottle-wrap { height: auto; aspect-ratio: 3 / 4; }
+  .award { flex-direction: row; flex-wrap: wrap; }
+  .btn { align-self: flex-start; display: inline-flex; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card:hover .bottle { animation: none; }
+  .btn, .pill { transition: none; }
+}
+</style>
+
+</head>
+<body>
+<main>
+  <header>
+    <span class="kicker">Sundi's picks</span>
+    <h1>Nail Polish Faves</h1>
+    <div class="filters" role="group" aria-label="Filter picks by step">
+      <button type="button" class="pill" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="pill" data-filter="base" aria-pressed="false">Base coat</button>
+      <button type="button" class="pill" data-filter="color" aria-pressed="false">Color</button>
+      <button type="button" class="pill" data-filter="top" aria-pressed="false">Top coat</button>
+    </div>
+  </header>
+
+  <section data-step="base" aria-labelledby="base-h">
+    <div class="section-head">
+      <h2 id="base-h">Base coat</h2>
+    </div>
+
+    <article class="card">
+      <span class="price" aria-label="Price 13 dollars">$13</span>
+      <div class="bottle-wrap">
+        <img class="bottle" src="img/orly-bonder.webp" fetchpriority="high" alt="ORLY Bonder rubberized basecoat bottle with a purple cap and orange-gold polish" width="227" height="528">
+      </div>
+      <div class="info">
+        <span class="brand">ORLY</span>
+        <h3>Bonder</h3>
+        <p class="tagline">Rubberized base coat that works like double-sided sticky tape for your polish.</p>
+        <ul class="tags">
+          <li>Rubberized</li>
+          <li>Vegan</li>
+          <li>Cruelty-free</li>
+        </ul>
+        <div class="facts">
+          <span><span class="stars" aria-hidden="true">★★★★★</span> 4.8 <span class="count">(490 reviews)</span></span>
+          <span>94% recommend</span>
+        </div>
+        <ul class="award">
+          <li>#1 best-selling base coat</li>
+          <li>Cosmo Holy Grail 2026</li>
+          <li>Mani lasts up to 2 weeks</li>
+        </ul>
+        <a class="btn" href="https://orlybeauty.com/products/orly-bonder" target="_blank" rel="noopener">Get it at ORLY</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <span class="price" aria-label="Price 13 dollars">$13</span>
+      <div class="bottle-wrap">
+        <img class="bottle" src="img/holo-taco-base-coat.webp" loading="lazy" decoding="async" alt="Holo Taco Base Coat bottle with a black cap and bright blue base coat" width="212" height="600">
+      </div>
+      <div class="info">
+        <span class="brand">Holo Taco</span>
+        <h3>Long-Lasting Base Coat</h3>
+        <p class="tagline">Clear base coat that anchors polish to the nail so it chips and peels less.</p>
+        <ul class="tags">
+          <li>Vegan</li>
+          <li>Cruelty-free</li>
+          <li>Stain shield</li>
+        </ul>
+        <div class="facts">
+          <span><span class="stars" aria-hidden="true">★★★★½</span> 4.5 <span class="count">(44 reviews)</span></span>
+          <span>95% recommend</span>
+        </div>
+        <ul class="award">
+          <li>Protects nails from polish staining</li>
+          <li>Free of 10 harsh ingredients</li>
+          <li>Medium rounded brush</li>
+        </ul>
+        <a class="btn" href="https://www.ulta.com/p/base-coat-pimprod2047973?sku=2630751" target="_blank" rel="noopener">Get it at Ulta</a>
+      </div>
+    </article>
+  </section>
+
+  <section data-step="color" aria-labelledby="color-h">
+    <div class="section-head">
+      <h2 id="color-h">Color</h2>
+    </div>
+
+    <article class="card">
+      <span class="price" aria-label="Price 13 dollars">$13</span>
+      <div class="bottle-wrap">
+        <img class="bottle" src="img/the-floor-is-guava.webp" loading="lazy" decoding="async" alt="Holo Taco Crème Nail Polish in The Floor Is Guava, a coral red, in a bottle with a black cap" width="212" height="600">
+      </div>
+      <div class="info">
+        <span class="brand">Holo Taco · Crème</span>
+        <h3>The Floor Is Guava</h3>
+        <p class="tagline">Coral red crème polish that is high in pigment and made to last.</p>
+        <ul class="tags">
+          <li>Vegan</li>
+          <li>Cruelty-free</li>
+          <li>Crème finish</li>
+        </ul>
+        <div class="facts">
+          <span><span class="stars" aria-hidden="true">★★★★☆</span> 4.2 <span class="count">(97 reviews)</span></span>
+          <span>82% recommend</span>
+        </div>
+        <ul class="award">
+          <li>Opaque in 2 to 3 coats</li>
+          <li>10-free formula</li>
+          <li>Medium rounded crème brush</li>
+        </ul>
+        <a class="btn" href="https://www.ulta.com/p/creme-nail-polish-pimprod2047963?sku=2636578" target="_blank" rel="noopener">Get it at Ulta</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <span class="price" aria-label="Price 15 dollars 50 cents">$15.50</span>
+      <div class="bottle-wrap">
+        <img class="bottle photo" src="img/milky-white-shimmer.webp" loading="lazy" decoding="async" alt="Holo Taco Milky White Shimmer polish, a sheer milky white with fine shimmer, surrounded by scoops of ice cream" width="700" height="700">
+      </div>
+      <div class="info">
+        <span class="brand">Holo Taco · Shimmer</span>
+        <h3>Milky White Shimmer</h3>
+        <p class="tagline">Buildable, sheer milky white with a fine white shimmer. One coat is a thin glaze, two to three is milky frosting.</p>
+        <ul class="tags">
+          <li>Vegan</li>
+          <li>Cruelty-free</li>
+          <li>10-free</li>
+        </ul>
+        <div class="facts">
+          <span>214 reviews</span>
+        </div>
+        <ul class="award">
+          <li>Sheer and buildable</li>
+          <li>Designed by Simply Nailogical</li>
+          <li>Medium rounded brush</li>
+        </ul>
+        <a class="btn" href="https://www.holotaco.com/products/milky-white-shimmer" target="_blank" rel="noopener">Get it at Holo Taco</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <span class="price" aria-label="Price 13 dollars 50 cents">$13.50</span>
+      <div class="bottle-wrap">
+        <img class="bottle photo" src="img/lowkey-blushing.jpg" loading="lazy" decoding="async" alt="Holo Taco Lowkey Blushing, a warm blush pink crème polish in a bottle with a black cap, against a warm orange background" width="700" height="700">
+      </div>
+      <div class="info">
+        <span class="brand">Holo Taco · Crème</span>
+        <h3>Lowkey Blushing</h3>
+        <p class="tagline">Cozy, warm blush pink crème. A neutral that's still fun, with full coverage in two to three coats.</p>
+        <ul class="tags">
+          <li>Vegan</li>
+          <li>Cruelty-free</li>
+          <li>10-free</li>
+        </ul>
+        <div class="facts">
+          <span><span class="stars" aria-hidden="true">★★★★★</span> 4.8 <span class="count">(222 reviews)</span></span>
+        </div>
+        <ul class="award">
+          <li>Full coverage in 2 to 3 coats</li>
+          <li>Pretty under special effects toppers</li>
+          <li>Designed by Simply Nailogical</li>
+        </ul>
+        <a class="btn" href="https://www.holotaco.com/products/lowkey-blushing" target="_blank" rel="noopener">Get it at Holo Taco</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <span class="price" aria-label="Price 13 dollars 50 cents">$13.50</span>
+      <div class="bottle-wrap">
+        <img class="bottle photo" src="img/im-over-brew.jpg" loading="lazy" decoding="async" alt="Holo Taco I'm Over Brew, a deep burgundy crème polish in a bottle with a black cap, against a black background" width="700" height="700">
+      </div>
+      <div class="info">
+        <span class="brand">Holo Taco · Crème</span>
+        <h3>I'm Over Brew</h3>
+        <p class="tagline">Classic deep burgundy crème for vampy vibes, perfect for fall or any time of year.</p>
+        <ul class="tags">
+          <li>Vegan</li>
+          <li>Cruelty-free</li>
+          <li>10-free</li>
+        </ul>
+        <div class="facts">
+          <span><span class="stars" aria-hidden="true">★★★★★</span> 4.8 <span class="count">(738 reviews)</span></span>
+        </div>
+        <ul class="award">
+          <li>Full coverage in 2 to 3 coats</li>
+          <li>Super pigmented, so use a base coat to prevent staining</li>
+          <li>Medium rounded brush</li>
+        </ul>
+        <a class="btn" href="https://www.holotaco.com/products/im-over-brew" target="_blank" rel="noopener">Get it at Holo Taco</a>
+      </div>
+    </article>
+  </section>
+
+  <section data-step="top" aria-labelledby="top-h">
+    <div class="section-head">
+      <h2 id="top-h">Top coat</h2>
+    </div>
+
+    <article class="card">
+      <span class="price" aria-label="Price 13 dollars">$13</span>
+      <div class="bottle-wrap">
+        <img class="bottle" src="img/glossy-taco-top-coat.webp" loading="lazy" decoding="async" alt="Holo Taco Glossy Taco Top Coat in a clear bottle with a black cap" width="212" height="600">
+      </div>
+      <div class="info">
+        <span class="brand">Holo Taco</span>
+        <h3>Glossy Taco Top Coat</h3>
+        <p class="tagline">Quick-drying, high-shine top coat that seals your manicure under a glass-like gloss.</p>
+        <ul class="tags">
+          <li>Vegan</li>
+          <li>Cruelty-free</li>
+          <li>High shine</li>
+        </ul>
+        <div class="facts">
+          <span><span class="stars" aria-hidden="true">★★★★☆</span> 4.4 <span class="count">(50 reviews)</span></span>
+          <span>87% recommend</span>
+        </div>
+        <ul class="award">
+          <li>Glass-like glossy seal</li>
+          <li>Boosts the effect of holo polishes</li>
+          <li>10-free formula</li>
+        </ul>
+        <a class="btn" href="https://www.ulta.com/p/glossy-taco-top-coat-pimprod2047969?sku=2630726" target="_blank" rel="noopener">Get it at Ulta</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <span class="price" aria-label="Price 14 dollars">$14</span>
+      <div class="bottle-wrap">
+        <img class="bottle photo" src="img/mooncat-speed-demon.webp" loading="lazy" decoding="async" alt="mooncat Speed Demon Top Coat, a clear bottle with a faceted bronze crystal cap against a pink and blue gradient" width="700" height="875">
+      </div>
+      <div class="info">
+        <span class="brand">mooncat</span>
+        <h3>Speed Demon Top Coat</h3>
+        <p class="tagline">Super glossy top coat that dries wickedly fast and seals in your lacquer.</p>
+        <ul class="tags">
+          <li>Vegan</li>
+          <li>Cruelty-free</li>
+          <li>Super glossy</li>
+        </ul>
+        <div class="facts">
+          <span><span class="stars" aria-hidden="true">★★★★★</span> 4.7 <span class="count">(12,353 reviews)</span></span>
+        </div>
+        <ul class="award">
+          <li>Quick-drying</li>
+          <li>10-free formula</li>
+          <li>Made in the USA</li>
+        </ul>
+        <a class="btn" href="https://www.mooncat.com/products/speed-demon-top-coat" target="_blank" rel="noopener">Get it at mooncat</a>
+      </div>
+    </article>
+  </section>
+
+</main>
+<script>
+(function () {
+  var pills = Array.prototype.slice.call(document.querySelectorAll('.pill'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section[data-step]'));
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var current = 'all';
+  var run = 0; // bumps on every click so a fast second click cancels the first animation
+
+  function setPills(f) {
+    pills.forEach(function (p) { p.setAttribute('aria-pressed', String(p.dataset.filter === f)); });
+  }
+  function show(f) {
+    sections.forEach(function (sec) { sec.hidden = !(f === 'all' || sec.dataset.step === f); });
+  }
+  function visible() { return sections.filter(function (s) { return !s.hidden; }); }
+  function stopAll() {
+    sections.forEach(function (s) {
+      s.getAnimations({ subtree: true }).forEach(function (a) { a.cancel(); });
+    });
+  }
+
+  function apply(f, pill) {
+    if (f === current) return;
+    current = f;
+    setPills(f);
+    var canAnimate = !reduceMotion.matches && typeof document.body.animate === 'function';
+    if (!canAnimate) { show(f); return; }
+
+    var mine = ++run;
+    pill.animate(
+      [{ transform: 'translate(2px, 2px) scale(1)' }, { transform: 'translate(2px, 2px) scale(1.12)' }, { transform: 'translate(2px, 2px) scale(1)' }],
+      { duration: 260, easing: 'ease-out' }
+    );
+
+    // 1. Quickly fade out what's on screen now
+    stopAll();
+    var outs = visible().map(function (s) {
+      return s.animate(
+        [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(10px) scale(.98)' }],
+        { duration: 150, easing: 'ease-in', fill: 'forwards' }
+      ).finished;
+    });
+
+    // 2. Swap sections, then pop the new cards in one after another
+    Promise.all(outs).catch(function () {}).then(function () {
+      if (mine !== run) return;
+      stopAll();
+      show(f);
+      var items = [];
+      visible().forEach(function (s) {
+        items.push(s.querySelector('.section-head'));
+        Array.prototype.push.apply(items, s.querySelectorAll('.card'));
+      });
+      items.forEach(function (el, i) {
+        el.animate(
+          [{ opacity: 0, transform: 'translateY(24px) scale(.96)' }, { opacity: 1, transform: 'none' }],
+          { duration: 420, delay: i * 70, easing: 'cubic-bezier(.34, 1.4, .64, 1)', fill: 'backwards' }
+        );
+      });
+    });
+  }
+
+  pills.forEach(function (p) { p.addEventListener('click', function () { apply(p.dataset.filter, p); }); });
+  setPills('all');
+  show('all');
+})();
+</script>
+</body>
+</html>

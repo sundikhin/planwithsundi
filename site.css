@@ -1,0 +1,61 @@
+/* Shared site styles: brand colors (light + dark), fonts, page background, and the header look. */
+[hidden] { display: none !important; }
+img { max-width: 100%; }
+
+:root {
+  --bg: #fff1f6;
+  --card: #ffffff;
+  --ink: #3b1530;
+  --ink-soft: #7a4d6b;
+  --pink: #ff5fa2;
+  --lilac: #d9c2ff;
+  --mint: #b9f0d8;
+  --sun: #ffe27a;
+  --line: #3b1530;
+  --shadow: #3b1530;
+  --font-display: "Bagel Fat One", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121014; --card: #1d1a20; --ink: #f7eef3; --ink-soft: #b8a9b3;
+    --pink: #ff7ab5; --lilac: #b79cf0; --mint: #7fd8b4; --sun: #f2d36b;
+    --line: #f7eef3; --shadow: #000000; --title: var(--pink); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121014; --card: #1d1a20; --ink: #f7eef3; --ink-soft: #b8a9b3;
+  --pink: #ff7ab5; --lilac: #b79cf0; --mint: #7fd8b4; --sun: #f2d36b;
+  --line: #f7eef3; --shadow: #000000; --title: var(--pink); color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  padding-block: 2rem 4rem;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  background-image: radial-gradient(color-mix(in srgb, var(--pink) 28%, transparent) 2px, transparent 2.5px);
+  background-size: 28px 28px;
+}
+main { max-width: 40rem; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
+
+header { text-align: center; display: flex; flex-direction: column; align-items: center; gap: .6rem; }
+.kicker {
+  font-weight: 800; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+  background: var(--sun); color: #3b1530; padding: .25rem .75rem; border-radius: 999px;
+  border: 2px solid var(--line); transform: rotate(-2deg);
+}
+h1 {
+  font-family: var(--font-display); font-weight: 400; margin: 0;
+  font-size: clamp(2.2rem, 11vw, 4rem); line-height: 1.05; text-wrap: balance; color: var(--pink);
+  text-shadow: 3px 3px 0 var(--ink);
+}
+.sub { margin: 0; color: var(--ink-soft); font-weight: 700; max-width: 40ch; text-wrap: balance; }
