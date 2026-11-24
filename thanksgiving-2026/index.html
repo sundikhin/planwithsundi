@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thanksgiving 2026</title>
+<meta name="description" content="The Thanksgiving 2026 menu, prep game plan, shopping list, and who's making what.">
+<link rel="canonical" href="https://planwithsundi.com/thanksgiving-2026/">
+<meta name="theme-color" content="#f6efe2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b1612" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Thanksgiving 2026">
+<meta property="og:description" content="The menu, the game plan, and who's making what.">
+<meta property="og:url" content="https://planwithsundi.com/thanksgiving-2026/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A6%83%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <div class="topbar">
+    <a href="/">← planwithsundi</a>
+    <span class="countdown" id="countdown" hidden></span>
+  </div>
+
+  <header>
+    <p class="date">Thursday, November 26</p>
+    <h1>Thanksgiving, 2026</h1>
+    <p class="summary" id="summary"></p>
+  </header>
+
+  <nav class="tabs" aria-label="Sections">
+    <a href="#menu">Menu</a>
+    <a href="#game-plan">Game plan</a>
+    <a href="#oven-sched">Oven</a>
+    <a href="#shopping">Shopping list</a>
+    <a href="#who">Who's bringing what</a>
+  </nav>
+
+  <section id="menu" class="block">
+    <div class="block-head">
+      <h2>The menu</h2>
+      <p class="aside">tap a dish for the recipe</p>
+    </div>
+    <ul class="tally" id="tally" aria-label="Dishes per person"></ul>
+    <div id="courses"></div>
+  </section>
+
+  <section id="game-plan" class="block wide">
+    <div class="block-head">
+      <h2>The game plan</h2>
+      <p class="aside">tap when done · drag to reschedule</p>
+    </div>
+    <div class="rail-wrap">
+      <div class="rail" id="rail"></div>
+    </div>
+  </section>
+
+  <section id="oven-sched" class="block">
+    <div class="block-head">
+      <h2 id="oven-title">Thursday oven</h2>
+      <p class="aside">one oven, two racks</p>
+    </div>
+    <div class="oven-bar">
+      <label for="dinner-time">Lunch at</label>
+      <input type="time" id="dinner-time" step="300">
+      <span class="oven-hint">change it and everything shifts</span>
+    </div>
+    <ol class="oven" id="oven" aria-labelledby="oven-title"></ol>
+  </section>
+
+  <section id="shopping" class="block">
+    <div class="block-head">
+      <h2>Shopping list</h2>
+      <p class="aside">rolled up from every recipe</p>
+    </div>
+    <div class="aisles" id="aisles"></div>
+  </section>
+
+  <section id="who" class="block">
+    <div class="block-head">
+      <h2>Who's bringing what</h2>
+      <p class="aside">so nobody doubles up</p>
+    </div>
+    <div class="people" id="people"></div>
+  </section>
+
+  <footer class="foot">Checkmarks, done tickets, rescheduled tickets, and lunch time are saved in this browser only.</footer>
+</main>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="recipe" id="recipe" role="dialog" aria-modal="true" aria-labelledby="recipe-title" hidden>
+  <div class="recipe-grip" aria-hidden="true"></div>
+  <div class="recipe-head">
+    <div>
+      <p class="recipe-course" id="recipe-course"></p>
+      <h2 id="recipe-title"></h2>
+      <p class="recipe-meta" id="recipe-meta" hidden></p>
+      <div id="recipe-who"></div>
+    </div>
+    <button type="button" class="recipe-close" id="recipe-close" aria-label="Close recipe">✕</button>
+  </div>
+  <div class="recipe-body">
+    <section class="recipe-sec">
+      <h3>Ingredients</h3>
+      <div id="recipe-ingredients"></div>
+    </section>
+    <section class="recipe-sec">
+      <h3>Recipe</h3>
+      <div id="recipe-steps"></div>
+      <a class="recipe-source" id="recipe-source" target="_blank" rel="noopener" hidden></a>
+    </section>
+  </div>
+</aside>
+
+<script src="menu.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
